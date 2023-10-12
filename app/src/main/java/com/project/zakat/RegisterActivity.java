@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText signupNoKK, signupNoKTP, signupNoTel, signupNama, signupAlamat, signupEmail, signupPassword, signupConpassword;
+    EditText signupNoKK, signupNoKTP, signupNoTel, signupNama, signupAlamat, signupUsername, signupPassword, signupConpassword;
     Button btnSignup, btnBack;
     FirebaseDatabase database;
     DatabaseReference reference;
@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
         signupNoTel = findViewById(R.id.no_telp);
         signupNama = findViewById(R.id.nama);
         signupAlamat = findViewById(R.id.alamat);
-        signupEmail = findViewById(R.id.emailsignup);
+        signupUsername = findViewById(R.id.usernamesignup);
         signupPassword = findViewById(R.id.passwordsignup);
         signupConpassword = findViewById(R.id.conpasswordsignup);
 
@@ -50,11 +50,11 @@ public class RegisterActivity extends AppCompatActivity {
                 String noTel = signupNoTel.getText().toString();
                 String nama = signupNama.getText().toString();
                 String alamat = signupAlamat.getText().toString();
-                String Email = signupEmail.getText().toString();
+                String username = signupUsername.getText().toString();
                 String password = signupPassword.getText().toString();
                 String conpassword = signupConpassword.getText().toString();
 
-                HelperClass helperClass = new HelperClass(noKK, noKTP, noTel, nama, alamat, Email, password, conpassword);
+                HelperClass helperClass = new HelperClass(noKK, noKTP, noTel, nama, alamat, username, password, conpassword);
                 reference.child(noKK).setValue(helperClass);
 
                 Toast.makeText(RegisterActivity.this, "Daftar Akun Berhasil.", Toast.LENGTH_SHORT).show();

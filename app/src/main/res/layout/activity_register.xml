@@ -90,12 +90,12 @@
             android:textSize="15dp" />
 
         <EditText
-            android:id="@+id/emailsignup"
+            android:id="@+id/usernamesignup"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/inp_tamplate"
-            android:hint="Email"
+            android:hint="Username"
             android:inputType="text"
             android:paddingLeft="15dp"
             android:textColor="#FFFBF5"

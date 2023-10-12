@@ -2,7 +2,7 @@ package com.project.zakat;
 
 public class HelperClass {
 
-    String noKK, noKTP, noTel, nama, alamat, email, password, conpassword;
+    String noKK, noKTP, noTel, nama, alamat, username, password, conpassword;
 
     public String getNoKK() {
         return noKK;
@@ -44,12 +44,12 @@ public class HelperClass {
         this.alamat = alamat;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -68,13 +68,13 @@ public class HelperClass {
         this.conpassword = conpassword;
     }
 
-    public HelperClass(String noKK, String noKTP, String noTel, String nama, String alamat, String email, String password, String conpassword) {
+    public HelperClass(String noKK, String noKTP, String noTel, String nama, String alamat, String username, String password, String conpassword) {
         this.noKK = noKK;
         this.noKTP = noKTP;
         this.noTel = noTel;
         this.nama = nama;
         this.alamat = alamat;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.conpassword = conpassword;
     }

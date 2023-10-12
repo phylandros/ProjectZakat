@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText loginEmail, loginPassword;
+    EditText loginUsername, loginPassword;
     Button btnLogin;
     TextView txtSignup;
 
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loginEmail = findViewById(R.id.emaillogin);
+        loginUsername = findViewById(R.id.usernamelogin);
         loginPassword = findViewById(R.id.passwordlogin);
         btnLogin = findViewById(R.id.btnlogin);
         txtSignup = findViewById(R.id.txtsignup);
@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!validateEmail() | !validatePassword()){
+                if (!validateUsername() | !validatePassword()){
 
                 } else {
                     checkUser();
@@ -58,13 +58,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public Boolean validateEmail(){
-        String val = loginEmail.getText().toString();
+    public Boolean validateUsername(){
+        String val = loginUsername.getText().toString();
         if (val.isEmpty()){
-            loginEmail.setError("Username Kosong.");
+            loginUsername.setError("Username Kosong.");
             return false;
         } else {
-            loginEmail.setError(null);
+            loginUsername.setError(null);
             return true;
         }
     }
@@ -81,21 +81,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void checkUser(){
-        String userEmail = loginEmail.getText().toString().trim();
+        String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
 
         DatabaseReference reference = FirebaseDatabase.getInstance("https://zakat-a3efe-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users");
-        Query checkUserDatabase = reference.orderByChild("email").equalTo(userEmail);
+        Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
 
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
-                    loginEmail.setError(null);
-                    String passwordFromDB = snapshot.child(userEmail).child("password").getValue(String.class);
+                    loginUsername.setError(null);
+                    String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
 
                     if (!Objects.equals(passwordFromDB, userPassword)){
-                        loginEmail.setError(null);
+                        loginUsername.setError(null);
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                     } else {
@@ -103,8 +103,8 @@ public class LoginActivity extends AppCompatActivity {
                         loginPassword.requestFocus();
                     }
                 } else {
-                    loginEmail.setError("Email Tidak ditemukan.");
-                    loginEmail.requestFocus();
+                    loginUsername.setError("Email Tidak ditemukan.");
+                    loginUsername.requestFocus();
                 }
 
             }
